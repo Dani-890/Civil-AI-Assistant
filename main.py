@@ -1,3 +1,5 @@
+from openpyxl import Workbook
+from io import BytesIO
 import streamlit as st
 
 st.set_page_config(page_title="Civil AI Assistant", page_icon="🏗️", layout="wide")
@@ -25,8 +27,22 @@ if st.button("Generate Excel"):
         else:
             st.info("Work Type: Structure")
 
-        st.write("Excel generation next step mein add hogi.")
-        
+        wb = Workbook()
+ws = wb.active
+ws.title = "Requests"
+
+ws["A1"] = "WhatsApp Message"
+ws["A2"] = message
+
+buffer = BytesIO()
+wb.save(buffer)
+
+st.download_button(
+    "📥 Download Excel",
+    data=buffer.getvalue(),
+    file_name="Civil_Request.xlsx",
+    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+)
 st.divider()
 
 st.subheader("Download Excel")
