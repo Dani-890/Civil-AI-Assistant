@@ -1,18 +1,21 @@
 import streamlit as st
 
-st.set_page_config(page_title="Civil AI Assistant", layout="wide")
+st.set_page_config(page_title="Civil AI Assistant", page_icon="🏗️", layout="wide")
 
 st.title("🏗️ Civil AI Assistant")
-st.write("Welcome to Civil AI Engineer")
+st.subheader("WhatsApp to Excel")
 
-st.header("Modules")
+st.write("WhatsApp ka message yahan paste karein.")
 
-col1, col2 = st.columns(2)
+message = st.text_area(
+    "Paste WhatsApp Message",
+    height=300,
+    placeholder="WhatsApp message yahan paste karein..."
+)
 
-with col1:
-    st.button("🧱 Concrete Calculator")
-    st.button("🦾 Steel BBS")
-
-with col2:
-    st.button("🌍 Earthwork")
-    st.button("📄 Excel Reports")
+if st.button("Generate Excel"):
+    if message.strip() == "":
+        st.warning("Pehle WhatsApp message paste karein.")
+    else:
+        st.success("Message receive ho gaya.")
+        st.write("AI analysis aglay step mein add karenge.")
