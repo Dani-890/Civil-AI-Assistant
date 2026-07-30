@@ -12,18 +12,24 @@ message = st.text_area(
     height=300,
     placeholder="WhatsApp message yahan paste karein..."
 )
-
 if st.button("Generate Excel"):
     if message.strip() == "":
         st.warning("Pehle WhatsApp message paste karein.")
     else:
         st.success("Message receive ho gaya.")
 
-st.subheader("AI Output")
+        st.subheader("AI Output")
 
-if "Earthwork" in message or "earthwork" in message:
-    st.info("Work Type: Earthwork")
-else:
-    st.info("Work Type: Structure")
+        if "Earthwork" in message or "earthwork" in message:
+            st.info("Work Type: Earthwork")
+        else:
+            st.info("Work Type: Structure")
 
-st.write("Excel generation next step mein add hogi.")
+        st.write("Excel generation next step mein add hogi.")
+        
+st.divider()
+
+st.subheader("Download Excel")
+
+if st.button("Create Excel File"):
+    st.success("Excel file tayyar hai. (Next step mein actual Excel generate hogi)")
