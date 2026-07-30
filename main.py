@@ -18,4 +18,12 @@ if st.button("Generate Excel"):
         st.warning("Pehle WhatsApp message paste karein.")
     else:
         st.success("Message receive ho gaya.")
-        st.write("AI analysis aglay step mein add karenge.")
+
+st.subheader("AI Output")
+
+if "Earthwork" in message or "earthwork" in message:
+    st.info("Work Type: Earthwork")
+else:
+    st.info("Work Type: Structure")
+
+st.write("Excel generation next step mein add hogi.")
